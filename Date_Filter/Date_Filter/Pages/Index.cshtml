@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Date Filter</h1>
+    <hr />
+    <form method="post">
+        Start Date: <input type="datetime-local" name="startdate" />
+        End Date: <input type="datetime-local" name="enddate" />
+        <input type="submit" value="Submit" class="btn btn-success"/>
+        <a asp-page="/create">Add New Records</a>
+        <table class="table">
+            <tr>
+                <th>
+                    Employee Id
+                </th>
+                <th>Employee Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Join Date</th>
+            </tr>
+            @foreach (var item in Model.results)
+            {
+                <tr>
+                    <td>@item.EmpId</td>
+                    <td>@item.EmpName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Gender</td>
+                    <td>@item.Joindate</td>
+                </tr>
+            }
+        </table>
+    </form>
+</div>
+
